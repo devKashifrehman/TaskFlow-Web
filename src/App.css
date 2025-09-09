@@ -1,38 +1,24 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* App layout responsive spacing for content beside the sidebar */
+.app-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* Main content area */
+.app-main {
+  /* Keep content beside fixed 240px sidebar on desktop */
+  margin-left: 240px;
+  /* Slightly more padding to move content a bit further forward */
+  padding: 24px 28px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: margin-left 0.3s ease;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+/* Small screens: sidebar becomes overlay, so remove left margin */
+@media (max-width: 768px) {
+  .app-main {
+    margin-left: 0;
+    /* Extra top padding to avoid the mobile toggle button area */
+    padding: 56px 16px 20px;
   }
 }

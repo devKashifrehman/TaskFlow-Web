@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Sidebar from "./SidebarComponents/Sidebar";
+import AddTask from "./AddTaskComponents/AddTask"
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      <Sidebar />
+      <main className="app-main">
+        {/* <h1>TaskFlow</h1> */}
+        {/* Main content area */}
+        {/* <p>
+          This is where your tasks and details will appear. Resize the window to see the responsive behavior.
+        </p> */}
+        <AddTask categories={[]} onAddTask={() => {}} />
+      </main>
     </div>
   );
 }

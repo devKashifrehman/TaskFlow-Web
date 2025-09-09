@@ -1,70 +1,94 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# TaskFlow - Task Management Web App  
 
-## Available Scripts
+TaskFlow is a simple **Task Management App** built with **React.js** and **CSS**.  
+It helps users organize their **Work**, **Study**, and **Personal** tasks in a clean and minimal UI.  
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 🚀 Features
+- ➕ Add new tasks with category (Work / Study / Personal)  
+- ✅ Mark tasks as complete  
+- ✏️ Edit or 🗑️ delete tasks  
+- 🎨 Simple, responsive, and modern UI  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🛠 Tech Stack
+- **Frontend:** React.js, CSS  
+- **Version Control:** Git & GitHub  
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 📸 Preview  
+![TaskFlow UI](./Screenshot%202025-09-09%20120931.png)  
+![TaskFlow UI](./Screenshot%202025-09-09%20121035.png)
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 📂 Project Structure
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+TaskFlow-Web/
+│-- public/
+│-- src/
+│   │-- components/
+│   │   │-- Sidebar.jsx
+│   │   │-- AddTask.jsx
+│   │   │-- TaskList.jsx
+│   │-- App.js
+│   │-- index.js
+│-- package.json
+│-- README.md
+│-- screenshot.png
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+````
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## ⚡ How to Run Locally
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Clone the repo:
+   ```bash
+   git clone https://github.com/devKashifrehman/TaskFlow-Web.git
+````
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2. Go to folder:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+   ```bash
+   cd TaskFlow-Web
+   ```
 
-## Learn More
+3. Install dependencies:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   ```bash
+   npm install
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+4. Start the app:
 
-### Code Splitting
+   ```bash
+   npm start
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## 📌 Future Improvements
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+* 🔗 Add backend support with Node.js / Express
+* 🔐 User authentication (Login/Signup)
+* 🗄️ Save tasks in database (SQL Server)
+* 📱 Add mobile app version (React Native / Flutter)
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 👨‍💻 Author
 
-### Advanced Configuration
+**Kashif Rehman**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+* GitHub: [devKashifrehman](https://github.com/devKashifrehman)
+* LinkedIn: [Kashif Rehman](https://www.linkedin.com/in/kashif-rehman-04620a26b/)
 
-### Deployment
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
