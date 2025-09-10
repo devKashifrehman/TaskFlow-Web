@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./AddTask.css";
 
+const uid = () => (typeof crypto !== "undefined" && crypto.randomUUID
+  ? crypto.randomUUID()
+  : `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`);
+
 const Tasks = ({ categories }) => {
   const getStoredCategories = () => {
     try {
@@ -12,25 +16,31 @@ const Tasks = ({ categories }) => {
   const initialCatList = getStoredCategories();
   const [tasks, setTasks] = useState([
     {
-      id: Date.now(),
+      id: uid(),
       title: "Finish the report",
       description: "complete the quarterly sales report",
-      category: (initialCatList[0] || "General"),
+      category: "Work",
       completed: false,
+      everCompleted: false,
+      edited: false,
     },
        {
-      id: Date.now(),
+      id: uid(),
       title: "Study for exam",
       description: "Review flashcards and notes",
-      category: (initialCatList[0] || "General"),
+      category: "Study",
       completed: false,
+      everCompleted: false,
+      edited: false,
     },
          {
-      id: Date.now(),
+      id: uid(),
       title: "Buy groceries",
       description: "Milk, Bread, Eggs, and Fruits",
-      category: (initialCatList[0] || "General"),
+      category: "Personal",
       completed: false,
+      everCompleted: false,
+      edited: false,
     },
   ]);
   const [categoriesList, setCategoriesList] = useState(initialCatList);
@@ -46,6 +56,9 @@ const Tasks = ({ categories }) => {
       return "All";
     }
   });
+  const [editingId, setEditingId] = useState(null);
+  const [showErrorModal, setShowErrorModal] = useState(false);
+  const [errorModalMsg, setErrorModalMsg] = useState("");
 
   // Keep selected category in sync with Sidebar
   useEffect(() => {
@@ -72,15 +85,30 @@ const Tasks = ({ categories }) => {
     e.preventDefault();
     if (!title.trim()) return;
 
-    const newTask = {
-      id: Date.now(),
-      title,
-      description,
-      category: category || "General",
-      completed: false,
-    };
+    if (editingId) {
+      setTasks(tasks.map((t) =>
+        t.id === editingId ? {
+          ...t,
+          title,
+          description,
+          category,
+          edited: t.edited || (t.everCompleted && !t.completed)
+        } : t
+      ));
+      setEditingId(null);
+    } else {
+      const newTask = {
+        id: uid(),
+        title,
+        description,
+        category: category || "General",
+        completed: false,
+        everCompleted: false,
+        edited: false,
+      };
+      setTasks([...tasks, newTask]);
+    }
 
-    setTasks([...tasks, newTask]);
     setTitle("");
     setDescription("");
     setCategory(effectiveDefaultCategory);
@@ -89,9 +117,15 @@ const Tasks = ({ categories }) => {
 
   const handleToggleComplete = (id) => {
     setTasks(
-      tasks.map((task) =>
-        task.id === id ? { ...task, completed: !task.completed } : task
-      )
+      tasks.map((task) => {
+        if (task.id !== id) return task;
+        const nowCompleted = !task.completed;
+        return {
+          ...task,
+          completed: nowCompleted,
+          everCompleted: nowCompleted ? true : task.everCompleted,
+        };
+      })
     );
   };
 
@@ -102,10 +136,15 @@ const Tasks = ({ categories }) => {
   const handleEdit = (id) => {
     const taskToEdit = tasks.find((task) => task.id === id);
     if (taskToEdit) {
+      if (taskToEdit.completed) {
+        setErrorModalMsg("your task has been complete you want edit your task plz uncheck your task");
+        setShowErrorModal(true);
+        return;
+      }
       setTitle(taskToEdit.title);
       setDescription(taskToEdit.description);
       setCategory(taskToEdit.category);
-      setTasks(tasks.filter((task) => task.id !== id));
+      setEditingId(id);
       setShowForm(true);
     }
   };
@@ -131,12 +170,12 @@ const Tasks = ({ categories }) => {
         <div
           className="modal-backdrop"
           onClick={(e) => {
-            if (e.target === e.currentTarget) setShowForm(false);
+            if (e.target === e.currentTarget) { setShowForm(false); setEditingId(null); }
           }}
         >
           <div className="modal-panel">
             <div style={{ marginBottom: 12 }}>
-              <h3 className="modal-title">Add new task</h3>
+              <h3 className="modal-title">{editingId ? "Edit task" : "Add new task"}</h3>
             </div>
             <form onSubmit={handleSubmit}>
               <label htmlFor="task-title" className="modal-label">Title</label>
@@ -177,15 +216,27 @@ const Tasks = ({ categories }) => {
                 <button
                   type="button"
                   className="btn btn-outline"
-                  onClick={() => setShowForm(false)}
+                  onClick={() => { setShowForm(false); setEditingId(null); }}
                 >
                   Cancel
                 </button>
                 <button type="submit" className="btn btn-primary">
-                  Save
+                  {editingId ? "Update" : "Save"}
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {showErrorModal && (
+        <div className="modal-backdrop" onClick={(e) => { if (e.target === e.currentTarget) { setShowErrorModal(false); setErrorModalMsg(""); } }}>
+          <div className="modal-panel">
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
+              <h3 className="modal-title" style={{ margin: 0 }}>Action not allowed</h3>
+              <button aria-label="Close" onClick={() => { setShowErrorModal(false); setErrorModalMsg(""); }} style={{ background: 'transparent', border: 'none', fontSize: 20, lineHeight: 1, cursor: 'pointer' }}>×</button>
+            </div>
+            <p style={{ margin: 0 }}>{errorModalMsg}</p>
           </div>
         </div>
       )}
@@ -233,6 +284,9 @@ const Tasks = ({ categories }) => {
 
                 <p className="task-desc">{task.description}</p>
                 <p className="task-category">Category: {task.category}</p>
+                {task.edited && (
+                  <p className="task-edited"><span role="img" aria-label="attention">⚠️</span> edited after complete a task</p>
+                )}
 
                 <div className="task-actions">
                   <button className="edit-btn" onClick={() => handleEdit(task.id)}>

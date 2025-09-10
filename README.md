@@ -27,8 +27,8 @@ It helps users organize their **Work**, **Study**, and **Personal** tasks in a c
 ---
 
 ## 📸 Preview  
-![TaskFlow UI](./Screenshot%202025-09-09%20120931.png)  
-![TaskFlow UI](./Screenshot%202025-09-09%20121035.png)
+![TaskFlow UI](./Screenshot%202025-09-10%20101205.png)  
+![TaskFlow UI](./Screenshot%202025-09-10%20101244.png)
 
 ---
 
