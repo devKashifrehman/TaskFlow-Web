@@ -241,3 +241,16 @@
     display: inline-flex;
   }
 }
+.neon-line {
+  border: none;
+  height: 2px;
+  background: #39ff14; /* Neon green */
+  box-shadow: 0 0 5px #39ff14, 0 0 10px #39ff14, 0 0 20px #39ff14;
+  margin-bottom: 8px;
+}
+
+.copyright-text {
+  font-size: 0.85rem;
+  color: #39ff14;
+  text-shadow: 0 0 5px #39ff14, 0 0 10px #39ff14;
+}

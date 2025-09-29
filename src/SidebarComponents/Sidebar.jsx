@@ -3,7 +3,7 @@ import "./Sidebar.css";
 
 // Default categories with colors (Work: yellow, Study: blue, Personal: pink)
 const DEFAULT_CATEGORIES = [
-    { name: "All", color: "Green" },
+  { name: "All", color: "Green" },
   { name: "Work", color: "#FACC15" }, // yellow-400
   { name: "Study", color: "#60A5FA" }, // blue-400
   { name: "Personal", color: "#F472B6" }, // pink-400
@@ -88,7 +88,9 @@ const Sidebar = () => {
       localStorage.setItem("taskflowSelectedCategory", name);
     } catch {}
     try {
-      window.dispatchEvent(new CustomEvent("taskflow:categoryChange", { detail: name }));
+      window.dispatchEvent(
+        new CustomEvent("taskflow:categoryChange", { detail: name })
+      );
     } catch {}
     // On small screens, close drawer after selecting
     setIsOpen(false);
@@ -122,7 +124,10 @@ const Sidebar = () => {
               }`}
               onClick={() => handleSelect(category.name)}
             >
-              <span className="badge-dot" style={{ "--dot-color": category.color }} />
+              <span
+                className="badge-dot"
+                style={{ "--dot-color": category.color }}
+              />
               <span className="category-label">{category.name}</span>
             </li>
           ))}
@@ -131,6 +136,14 @@ const Sidebar = () => {
         <button className="add-category-btn" onClick={openAddCategoryModal}>
           + Add new category
         </button>
+
+        {/* ---- Footer at Bottom ---- */}
+        <div className="sidebar-footer">
+          <hr className="neon-line" />
+          <p className="copyright-text">
+            © {new Date().getFullYear()} Developed by Kashif Rehman
+          </p>
+        </div>
       </aside>
 
       {/* Add Category Modal */}
@@ -173,7 +186,10 @@ const Sidebar = () => {
             {error ? <div className="modal-error">{error}</div> : null}
 
             <div className="modal-actions">
-              <button onClick={closeAddCategoryModal} className="btn btn-outline">
+              <button
+                onClick={closeAddCategoryModal}
+                className="btn btn-outline"
+              >
                 Cancel
               </button>
               <button onClick={handleSaveCategory} className="btn btn-primary">
