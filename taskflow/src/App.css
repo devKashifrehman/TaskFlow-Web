@@ -1,0 +1,24 @@
+/* App layout responsive spacing for content beside the sidebar */
+.app-container {
+  display: flex;
+}
+
+/* Main content area */
+.app-main {
+  /* Keep content beside fixed 240px sidebar on desktop */
+  margin-left: 240px;
+  /* Slightly more padding to move content a bit further forward */
+  padding: 24px 28px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: margin-left 0.3s ease;
+}
+
+/* Small screens: sidebar becomes overlay, so remove left margin */
+@media (max-width: 768px) {
+  .app-main {
+    margin-left: 0;
+    /* Extra top padding to avoid the mobile toggle button area */
+    padding: 56px 16px 20px;
+  }
+}
