@@ -55,46 +55,56 @@ TaskFlow-Web/
 ## ⚡ How to Run Locally
 
 1. Clone the repo:
-   ```bash
+
    git clone https://github.com/devKashifrehman/TaskFlow-Web.git
-````
+
 
 2. Go to folder:
 
-   ```bash
+  
    cd TaskFlow-Web
-   ```
+   
 
 3. Install dependencies:
 
-   ```bash
+ 
    npm install
-   ```
+  
 
 4. Start the app:
 
-   ```bash
+  
    npm start
-   ```
+  
 
----
 
-## 📌 Future Improvements
+ 📌 Future Improvements
 
-* 🔗 Add backend support with Node.js / Express
-* 🔐 User authentication (Login/Signup)
-* 🗄️ Save tasks in database (SQL Server)
-* 📱 Add mobile app version (React Native / Flutter)
+ 🔗 Add backend support with Node.js / Express
+ 🔐 User authentication (Login/Signup)
+ 🗄️ Save tasks in database (SQL Server)
+ 📱 Add mobile app version (React Native / Flutter)
 
----
 
-## 👨‍💻 Author
 
-**Kashif Rehman**
+© Copyright & Usage
 
-* GitHub: [devKashifrehman](https://github.com/devKashifrehman)
-* LinkedIn: [Kashif Rehman](https://www.linkedin.com/in/kashif-rehman-04620a26b/)
+© 2026 Kashif Rehman. All Rights Reserved.
+
+This project, including its design, structure, and source code, is the intellectual property of Kashif Rehman.
+
+Permission is hereby granted to view, fork, and use this project for personal, educational, and portfolio purposes only, provided that proper credit is given to the author.
+
+❌ Commercial use, redistribution, resale, or claiming this project as your own work is strictly prohibited without prior written permission from the author.
+
+👨‍💻 Author
+
+Kashif Rehman
+
+ GitHub: [devKashifrehman](https://github.com/devKashifrehman)
+ LinkedIn: [Kashif Rehman](https://www.linkedin.com/in/kashif-rehman-04620a26b/)
 
 ```
+
 
 
